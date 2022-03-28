@@ -1,12 +1,14 @@
 package AceUno.data;
 
 import AceUno.model.Card;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+@Component
 public class DeckManager {
 
     List<Card> drawPile = new ArrayList<>();
@@ -109,8 +111,11 @@ public class DeckManager {
         }
 
 
-
-
+    }
+    //refresh draw deck
+    public void resetDeck () {
+        drawPile.addAll(discardPile);
+        discardPile.clear();
     }
 
 

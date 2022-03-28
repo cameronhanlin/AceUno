@@ -4,22 +4,21 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" th:href="@{/app.css}" />
-    <title>UNO-HOME</title>
+    <title>RULES</title>
     <div class="navbar-fixed">
         <nav>
             <div class="container">
                 <h1>UNO RULES</h1>
                 <ul>
-                    <li  class="active"><a th:href="@{/}">Home</a></li>
-                    <li><a th:href="@{/rules}">Rules</a></li>
+                    <li><a th:href="@{/}">Home</a></li>
+                    <li class="active"><a th:href="@{/rules}">Rules</a></li>
                 </ul>
             </div>
         </nav>
     </div>
 </head>
 <body>
-    Welcome to the homepage!
+<img class="logo" th:src="'/cards/' + 'Uno-rules.png'" alt="Uno rules"/>
 
-    BUTTON HERE TO START GAME!!!
 </body>
 </html>
