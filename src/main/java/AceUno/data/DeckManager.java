@@ -51,6 +51,66 @@ public class DeckManager {
             player3.add(drawPile.get(cardToPull));
             drawPile.remove(cardToPull);
         }
+
+        cardToPull = rand.nextInt(drawPile.size());
+        discardPile.add(drawPile.get(cardToPull));
+        drawPile.remove(cardToPull);
+
+    }
+
+    //pick up 1 from draw pile
+    public void drawCard(int playerNum){
+        int cardToPull;
+
+        cardToPull = rand.nextInt(drawPile.size()); //randomly selecting card
+        if (playerNum == 1){
+            player1.add(drawPile.get(cardToPull)); //add to player hand
+        }
+        if (playerNum == 2){
+            player2.add(drawPile.get(cardToPull)); //add to player hand
+        }
+        if (playerNum == 3){
+            player3.add(drawPile.get(cardToPull)); //add to player hand
+        }
+        drawPile.remove(cardToPull);
+    }
+
+    public void drawTwo(int playerNum){
+        drawCard(playerNum);
+        drawCard(playerNum);
+    }
+
+
+    //remove from player hand and add to discard
+
+    public void discardCard(int playerNum, int cardID){
+        int handPlace = 0;
+
+        if(playerNum == 1){
+            while(!(player1.get(handPlace).getCardID() == cardID)){
+                handPlace++;
+            }
+            discardPile.add(player1.get(handPlace));
+            player1.remove(handPlace);
+        }
+        if(playerNum == 2){
+            while(!(player2.get(handPlace).getCardID() == cardID)){
+                handPlace++;
+            }
+            discardPile.add(player1.get(handPlace));
+            player2.remove(handPlace);
+        }
+        if(playerNum == 3){
+            while(!(player3.get(handPlace).getCardID() == cardID)){
+                handPlace++;
+            }
+            discardPile.add(player1.get(handPlace));
+            player3.remove(handPlace);
+        }
+
+
+
+
     }
 
 
