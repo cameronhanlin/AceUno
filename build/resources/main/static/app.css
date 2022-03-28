@@ -1,0 +1,13 @@
+.player-hand .row{
+    content:"";
+    clear:both;
+    display: table;
+
+
+}
+.player-hand .row .column{
+    box-sizing: border-box ;
+    float:left;
+    width:33.3%;
+    padding: 5px;
+}

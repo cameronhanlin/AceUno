@@ -19,7 +19,7 @@ public class DeckManager {
     String[] colors = {"Red","Yellow","Green","Blue"};
     Random rand = new Random();
 
-    int cardCount = 1;
+    int cardCount = 0;
 
     public DeckManager(){
         for(int j=0; j<colors.length; j++){
@@ -118,5 +118,22 @@ public class DeckManager {
         discardPile.clear();
     }
 
+
+    public List<Card> getPlayerHand(int player){
+        if (player == 1) {
+            return player1;
+        }
+        if (player == 2){
+            return player2;
+        }
+        if (player ==3){
+            return player3;
+        }
+        return null;
+    }
+
+    public Card getTopDiscardCard(){
+        return discardPile.get(discardPile.size()-1);
+    }
 
 }

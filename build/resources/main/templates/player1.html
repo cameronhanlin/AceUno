@@ -9,6 +9,23 @@
 <body>
 <div>
     <a href="/player2"> text</a>
+    <div class="discard-pile">
+        <!-- display draw pile -->
+        <a th:href="'/player2/'+ 10"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
+        <!-- display discard pile -->
+        <img class="draw" th:src="@{'/cards/AllCardsFolder/' + ${topDiscardCard.cardID} + '.png'}" alt="draw pile"/>
+    </div>
+    <div class="player-hand">
+        <div class ="row">
+            <div class ="column">
+                <div th:each="displayPlayerHand: ${player1Hand}">
+                    <a th:href="'/player2/' + ${displayPlayerHand.cardID}">
+                        <img th:src="@{'/cards/AllCardsFolder/' + ${displayPlayerHand.cardID} + '.png'}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

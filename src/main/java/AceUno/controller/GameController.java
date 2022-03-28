@@ -21,6 +21,8 @@ public class GameController {
 
     @RequestMapping("/player1/{cardID}")
     public String displayPlayer1(@PathVariable int cardID, ModelMap modelmap) {
+        modelmap.put("player1Hand", dealer.getPlayerHand(1));
+        modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
         return "player1";
     }
 
