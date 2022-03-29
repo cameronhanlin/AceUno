@@ -8,10 +8,10 @@
 </head>
 <body>
 <div>
-    <a href="/player2"> text</a>
+
     <div class="discard-pile">
         <!-- display draw pile -->
-        <a th:href="'/player2/'+ 10"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
+        <a th:href="'/player2/'+ 98"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
         <!-- display discard pile -->
         <img class="draw" th:src="@{'/cards/AllCardsFolder/' + ${topDiscardCard.cardID} + '.png'}" alt="draw pile"/>
     </div>

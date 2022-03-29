@@ -8,7 +8,25 @@
 </head>
 <body>
 <div>
-    <a href="/player3"> text</a>
+
+    <div class="discard-pile">
+        <!-- display draw pile -->
+        <a th:href="'/player3/'+ 98"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
+        <!-- display discard pile -->
+        <img class="draw" th:src="@{'/cards/AllCardsFolder/' + ${topDiscardCard.cardID} + '.png'}" alt="draw pile"/>
+    </div>
+    <div class="player-hand">
+        <div class ="row">
+            <div class ="column">
+                <!-- loops through to create 7 cards -->
+                <div th:each="displayPlayerHand: ${player2Hand}">
+                    <a th:href="'/player3/' + ${displayPlayerHand.cardID}">
+                        <img th:src="@{'/cards/AllCardsFolder/' + ${displayPlayerHand.cardID} + '.png'}"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
