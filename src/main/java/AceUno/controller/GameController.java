@@ -15,6 +15,7 @@ public class GameController {
 
     @RequestMapping("/")
     public String displayHomepage(){
+        dealer.clearDeck();
         dealer.dealHands();
         return "home";
     }
@@ -77,9 +78,26 @@ public class GameController {
 
 
     @RequestMapping("/rules")
-    public String displayRules(ModelMap modelMap) {
+    public String displayRules(ModelMap modelmap) {
         return "rules";
     }
 
 
+    @RequestMapping("/winner")
+    public String displayWinner(ModelMap modelmap) {
+        int winner = dealer.checkWinner();
+        if (winner == 1) {
+            modelmap.put("winnerName", "Andrea");
+        }
+        else if (winner == 2) {
+            modelmap.put("winnerName", "Cameron");
+        }
+        else if (winner == 3) {
+            modelmap.put("winnerName", "Elissa");
+        }
+        else {
+            modelmap.put("winnerName", "no winner, keep playing!");
+        }
+        return "winner";
+    }
 }

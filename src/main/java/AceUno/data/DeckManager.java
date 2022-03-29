@@ -35,6 +35,17 @@ public class DeckManager {
 
     }
 
+    public void clearDeck() {
+        drawPile.addAll(player1);
+        drawPile.addAll(player2);
+        drawPile.addAll(player3);
+        drawPile.addAll(discardPile);
+        player1.clear();
+        player2.clear();
+        player3.clear();
+        discardPile.clear();
+    }
+
     public void dealHands(){
         int cardToPull;
 

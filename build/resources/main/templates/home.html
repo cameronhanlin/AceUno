@@ -8,7 +8,7 @@
     <div class="navbar-fixed">
         <nav>
             <div class="container">
-                <h1>UNO RULES</h1>
+                <h1>UNO HOME</h1>
                 <ul>
                     <li  class="active"><a th:href="@{/}">Home</a></li>
                     <li><a th:href="@{/rules}">Rules</a></li>
@@ -17,12 +17,12 @@
         </nav>
     </div>
 </head>
-<body>
+<body class="homepage-main">
+    <img class="rules" th:src="'/images/' + 'unomain.jpeg'" alt="Uno home"/>
 
-<a href="/player1/99"> text</a>
+    <h1>Welcome to the homepage!</h1>
 
-    Welcome to the homepage!
-
-    BUTTON HERE TO START GAME!!!
+    <h3>BUTTON HERE TO START GAME!!!</h3>
+    <a href="/player1/99">PLAY GAME</a>
 </body>
 </html>
