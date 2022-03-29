@@ -158,4 +158,88 @@ public class DeckManager {
             return 0;
     }
 
+
+    public boolean wasValidMove(int player, boolean movingForward, int cardID){
+        int handPlace = 0;
+        String color;
+        int number;
+        String discardColor;
+        int discardNumber;
+
+        if(movingForward){
+            if(player == 1){
+                while(!(player3.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player3.get(handPlace).getColor();
+                number = player3.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+
+
+            } else if(player == 2){
+                while(!(player1.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player1.get(handPlace).getColor();
+                number = player1.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+
+            } else {
+                while(!(player2.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player2.get(handPlace).getColor();
+                number = player2.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+
+            }
+
+        } else {
+            if(player == 1){
+                while(!(player2.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player2.get(handPlace).getColor();
+                number = player2.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+
+            } else if(player == 2){
+                while(!(player3.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player3.get(handPlace).getColor();
+                number = player3.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+
+            } else {
+                while(!(player1.get(handPlace).getCardID() == cardID)){
+                    handPlace++;
+                }
+                color = player1.get(handPlace).getColor();
+                number = player1.get(handPlace).getNumber();
+
+                discardColor = getTopDiscardCard().getColor();
+                discardNumber = getTopDiscardCard().getNumber();
+            }
+        }
+
+        if(color.equals(discardColor) || number == discardNumber){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+    }
+
 }

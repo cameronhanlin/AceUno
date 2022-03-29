@@ -13,7 +13,7 @@ public class GameController {
     @Autowired
     DeckManager dealer = new DeckManager();
 
-    private boolean isReversed = false;
+    public boolean isReversed = false;
 
     @RequestMapping("/")
     public String displayHomepage(){
@@ -28,16 +28,30 @@ public class GameController {
             dealer.drawCard(3);
         }
         if (cardID >=0 && cardID <=55){
+
+
+            if(dealer.wasValidMove(1, !isReversed, cardID)){
+                if(!isReversed){
+                    dealer.discardCard(3, cardID);
+                } else {
+                    dealer.discardCard(2, cardID);
+                }
+                modelmap.put("invalidMove", true);
+            } else{
+                modelmap.put("invalidMove", false);
+            }
+
             if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
                 isReversed = !isReversed;
             }
-            dealer.discardCard(3, cardID);
+
         }
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
         } else {
             modelmap.put("noWinner", true);
         }
+
         if (!isReversed) {
             modelmap.put("nextPlayerTurn", "player2");
         } else {                                               //REVERSE CARD
@@ -55,11 +69,24 @@ public class GameController {
             dealer.drawCard(1);
         }
         if (cardID >=0 && cardID <=55){
+
+
+            if(dealer.wasValidMove(2, !isReversed, cardID)){
+                if(!isReversed){
+                    dealer.discardCard(1, cardID);
+                } else {
+                    dealer.discardCard(3, cardID);
+                }
+                modelmap.put("invalidMove", true);
+            } else{
+                modelmap.put("invalidMove", false);
+            }
+
             if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
                 isReversed = !isReversed;
             }
-            dealer.discardCard(1, cardID);
         }
+
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
         } else {
@@ -83,10 +110,23 @@ public class GameController {
             dealer.drawCard(2);
         }
         if (cardID >=0 && cardID <=55){
+
+
+            if(dealer.wasValidMove(3, !isReversed, cardID)){
+                if(!isReversed){
+                    dealer.discardCard(2, cardID);
+                } else {
+                    dealer.discardCard(1, cardID);
+                }
+                modelmap.put("invalidMove", true);
+            } else{
+                modelmap.put("invalidMove", false);
+            }
+
+
             if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
                 isReversed = !isReversed;
             }
-            dealer.discardCard(2, cardID);
         }
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
