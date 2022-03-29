@@ -8,7 +8,7 @@
 </head>
 <body>
 <div>
-
+    <h1> Player 3: Elissa </h1>
     <div class="discard-pile">
         <!-- display draw pile -->
         <a th:href="'/player1/'+ 98"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
@@ -17,14 +17,19 @@
     </div>
     <div class="player-hand">
         <div class ="row">
+            <div class= "item" th:each="displayPlayerHand: ${player3Hand}">
             <div class ="column">
-                <div th:each="displayPlayerHand: ${player3Hand}">
+
                     <a th:href="'/player1/' + ${displayPlayerHand.cardID}">
                         <img th:src="@{'/cards/AllCardsFolder/' + ${displayPlayerHand.cardID} + '.png'}"/>
                     </a>
                 </div>
             </div>
         </div>
+    </div>
+    <div th:hidden="${noWinner}">
+        <a href="/winner">
+            <input type="button" value="There's a winner!"></a>
     </div>
 </div>
 </body>

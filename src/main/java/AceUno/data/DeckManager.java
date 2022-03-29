@@ -19,7 +19,7 @@ public class DeckManager {
     String[] colors = {"Red","Yellow","Green","Blue"};
     Random rand = new Random();
 
-    int cardCount = 0;
+    int cardCount = 1;
 
     public DeckManager(){
         for(int j=0; j<colors.length; j++){
@@ -99,14 +99,14 @@ public class DeckManager {
             while(!(player2.get(handPlace).getCardID() == cardID)){
                 handPlace++;
             }
-            discardPile.add(player1.get(handPlace));
+            discardPile.add(player2.get(handPlace));
             player2.remove(handPlace);
         }
         if(playerNum == 3){
             while(!(player3.get(handPlace).getCardID() == cardID)){
                 handPlace++;
             }
-            discardPile.add(player1.get(handPlace));
+            discardPile.add(player3.get(handPlace));
             player3.remove(handPlace);
         }
 
@@ -134,6 +134,17 @@ public class DeckManager {
 
     public Card getTopDiscardCard(){
         return discardPile.get(discardPile.size()-1);
+    }
+
+    public int checkWinner(){
+        if (player1.size() == 0)
+            return 1;
+        else if (player2.size() == 0)
+            return 2;
+        else if (player3.size() == 0)
+            return 3;
+        else
+            return 0;
     }
 
 }

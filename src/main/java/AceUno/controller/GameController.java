@@ -27,6 +27,11 @@ public class GameController {
         if (cardID >=0 && cardID <=55){
             dealer.discardCard(3, cardID);
         }
+        if (dealer.checkWinner() !=0){
+            modelmap.put("noWinner", false);
+        } else {
+            modelmap.put("noWinner", true);
+        }
         modelmap.put("player1Hand", dealer.getPlayerHand(1));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
         return "player1";
@@ -41,6 +46,11 @@ public class GameController {
         if (cardID >=0 && cardID <=55){
             dealer.discardCard(1, cardID);
         }
+        if (dealer.checkWinner() !=0){
+            modelmap.put("noWinner", false);
+        } else {
+            modelmap.put("noWinner", true);
+        }
         modelmap.put("player2Hand", dealer.getPlayerHand(2));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
         return "player2";
@@ -54,6 +64,11 @@ public class GameController {
         }
         if (cardID >=0 && cardID <=55){
             dealer.discardCard(2, cardID);
+        }
+        if (dealer.checkWinner() !=0){
+            modelmap.put("noWinner", false);
+        } else {
+            modelmap.put("noWinner", true);
         }
         modelmap.put("player3Hand", dealer.getPlayerHand(3));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
