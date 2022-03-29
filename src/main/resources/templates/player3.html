@@ -11,7 +11,7 @@
     <h1> Player 3: Elissa </h1>
     <div class="discard-pile">
         <!-- display draw pile -->
-        <a th:href="'/player1/'+ 98"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
+        <a th:href="'/' + ${nextPlayerTurn} + '/98'"><img class="draw" th:src="'/cards/AllCardsFolder/' + '55.png'" alt="draw pile"/></a>
         <!-- display discard pile -->
         <img class="draw" th:src="@{'/cards/AllCardsFolder/' + ${topDiscardCard.cardID} + '.png'}" alt="draw pile"/>
     </div>
@@ -20,7 +20,7 @@
             <div class= "item" th:each="displayPlayerHand: ${player3Hand}">
             <div class ="column">
 
-                    <a th:href="'/player1/' + ${displayPlayerHand.cardID}">
+                    <a th:href="'/' + ${nextPlayerTurn} + '/' + ${displayPlayerHand.cardID}">
                         <img th:src="@{'/cards/AllCardsFolder/' + ${displayPlayerHand.cardID} + '.png'}"/>
                     </a>
                 </div>

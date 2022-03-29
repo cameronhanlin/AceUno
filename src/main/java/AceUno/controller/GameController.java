@@ -13,6 +13,8 @@ public class GameController {
     @Autowired
     DeckManager dealer = new DeckManager();
 
+    private boolean isReversed = false;
+
     @RequestMapping("/")
     public String displayHomepage(){
         dealer.clearDeck();
@@ -26,12 +28,20 @@ public class GameController {
             dealer.drawCard(3);
         }
         if (cardID >=0 && cardID <=55){
+            if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
+                isReversed = !isReversed;
+            }
             dealer.discardCard(3, cardID);
         }
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
         } else {
             modelmap.put("noWinner", true);
+        }
+        if (!isReversed) {
+            modelmap.put("nextPlayerTurn", "player2");
+        } else {                                               //REVERSE CARD
+            modelmap.put("nextPlayerTurn", "player3");
         }
         modelmap.put("player1Hand", dealer.getPlayerHand(1));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
@@ -45,12 +55,21 @@ public class GameController {
             dealer.drawCard(1);
         }
         if (cardID >=0 && cardID <=55){
+            if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
+                isReversed = !isReversed;
+            }
             dealer.discardCard(1, cardID);
         }
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
         } else {
             modelmap.put("noWinner", true);
+        }
+        if (!isReversed) {
+            modelmap.put("nextPlayerTurn", "player3");
+        }
+        else {                                               //REVERSE CARD
+            modelmap.put("nextPlayerTurn", "player1");
         }
         modelmap.put("player2Hand", dealer.getPlayerHand(2));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());
@@ -64,12 +83,21 @@ public class GameController {
             dealer.drawCard(2);
         }
         if (cardID >=0 && cardID <=55){
+            if (cardID == 12 || cardID == 25 || cardID == 38 || cardID == 51) {   //12, 25, 38, 51 are reverse cards
+                isReversed = !isReversed;
+            }
             dealer.discardCard(2, cardID);
         }
         if (dealer.checkWinner() !=0){
             modelmap.put("noWinner", false);
         } else {
             modelmap.put("noWinner", true);
+        }
+        if (!isReversed) {
+            modelmap.put("nextPlayerTurn", "player1");
+        }
+        else {                                               //REVERSE CARD
+            modelmap.put("nextPlayerTurn", "player2");
         }
         modelmap.put("player3Hand", dealer.getPlayerHand(3));
         modelmap.put("topDiscardCard", dealer.getTopDiscardCard());

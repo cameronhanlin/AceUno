@@ -34,22 +34,4 @@ h2 {
 .homepage-main img {
     height: 600px;
 }
-nav ul {
-    list-style-type: none;
-    overflow: hidden;
-    background-color: white;
-    /* position: fixed; - if you wanted the scroll bar to stay put while scrolling */
-}
-nav li {
-    float: left;
-    border-right: 2px solid #bbb; /* This creates a line around the nav item*/
-}
 
-nav li:last-child {
-    border-right: none; /* This makes no border after the last item on the right*/
-}
-nav li a {
-    text-align: center;
-    color: black;
-    padding: 14px 16px;
-}
